@@ -1,3 +1,5 @@
+
+// global variables  
 var input = $("#artists").val();
 var search = $("button#search");
 var infoArray = "";
@@ -5,6 +7,7 @@ var rawID = "";
 var artistID = "";
 var artistAlbums = "";
 var artistTopTracks = "";
+// settings for first API search
 const settings = {
   async: true,
   crossDomain: true,
@@ -21,6 +24,7 @@ const settings = {
     "X-RapidAPI-Key": "54925b7d60msh3c1dfb426ff3887p135fcfjsn984b8600dd90",
   },
 };
+//settings for second API search
 const settings2 = {
   async: true,
   crossDomain: true,
@@ -34,6 +38,7 @@ const settings2 = {
     "X-RapidAPI-Key": "54925b7d60msh3c1dfb426ff3887p135fcfjsn984b8600dd90",
   },
 };
+//search on button click
 $(search).on("click", function () {
   event.preventDefault();
   input = $("#artists").val();
