@@ -6,6 +6,7 @@ var rawID = "";
 var artistID = "";
 var artistAlbums = "";
 var artistTopTracks = "";
+var artistName = "";
 // settings for first API search
 const settings = {
   async: true,
@@ -55,6 +56,7 @@ $(search).on("click", function () {
       console.log(artistAlbums);
       artistTopTracks = response.data.artist.discography.topTracks.items;
       console.log(artistTopTracks);
+      artistName = artistTopTracks[0].track.artists.items[0].profile.name;
     });
   });
 });
