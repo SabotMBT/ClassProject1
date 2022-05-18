@@ -57,6 +57,7 @@ $(search).on("click", function () {
       artistTopTracks = response.data.artist.discography.topTracks.items;
       console.log(artistTopTracks);
       artistName = artistTopTracks[0].track.artists.items[0].profile.name;
+      artInfo();
     });
   });
 });
