@@ -61,3 +61,4 @@ $(search).on("click", function () {
     });
   });
 });
+artists.items;
