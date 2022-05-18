@@ -62,16 +62,25 @@
 // });
 
 function artInfo() {
-  var albumCover = artistTopTracks[0].track.album.coverArt.sources[1];
-  localStorage.setItem("album-cover", albumCover);
-  var img = artistAlbums[0].releases.items[0].coverArt.sources[1].url;
-  $("#img1").attr("src", img);
+  for (i = 0; i < 5; i++) {
+    var img = artistAlbums[i].releases.items[0].coverArt.sources[1].url;
+    var createImg = $("<img>");
+    $("#body1").append(createImg);
+    createImg.attr("src", img);
+  }
   console.log(img);
   localStorage.setItem("artist-name", artistName);
   localStorage.getItem("artist-name");
   console.log(artistName);
-  var artistTracks = artistTopTracks[0];
-  $("#hitSong").append(artistTracks);
+  var ordLi = $("<ol>");
+  $("#body2").append(ordLi);
+  ordLi.attr("id", "list");
+  for (i = 0; i < 5; i++) {
+    var artistTracks = artistTopTracks[i].track.name;
+    var listItem = $("<li>");
+    $("#list").append(listItem);
+    listItem.text(artistTracks);
+  }
 }
 
 function accGen() {
