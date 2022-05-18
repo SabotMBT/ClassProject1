@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -36,20 +37,52 @@
       <div id="log" style="height: 200px; width: 300px; overflow: auto;" class="ui-widget-content"></div>
     </div>
     <!-- Navbar -->
-<div class="container text-center mb-5">
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle btn-lg" type="button" id="dropdownMenu2" data-bs-toggle="dropdown"
-        aria-haspopup="true" aria-expanded="false" style="font-family: 'Macondo', cursive;">
-        Dropdown
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-        <button class="dropdown-item" type="button">Home</button>
-        <button onclick="myFunction()" class="dropdown-item" type="button">Browse</button>
-        <button class="dropdown-item" type="button">Random</button>
-        <button class="dropdown-item" type="button">Contact</button>
-      </div>
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown"
+      aria-haspopup="true" aria-expanded="false">
+      Dropdown
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+      <button class="dropdown-item" type="button">Home</button>
+      <button onclick="randomFunction()" class="dropdown-item" type="button">Random</button>
+      <button class="dropdown-item" type="button">Contact</button>
     </div>
-</div>
+  </div>
+  <form action="#">
+    <label for="lang">Browse Artists</label>
+    <select onchange=pullData() name="languages" id="lang">
+      <option value="empty"></option>
+      <option value="a">A</option>
+      <option value="b">B</option>
+      <option value="c">C</option>
+      <option value="d">D</option>
+      <option value="e">E</option>
+      <option value="f">F</option>
+      <option value="g">G</option>
+      <option value="h">H</option>
+      <option value="i">I</option>
+      <option value="j">J</option>
+      <option value="k">K</option>
+      <option value="l">L</option>
+      <option value="m">M</option>
+      <option value="n">N</option>
+      <option value="o">O</option>
+      <option value="p">P</option>
+      <option value="q">Q</option>
+      <option value="r">R</option>
+      <option value="s">S</option>
+      <option value="t">T</option>
+      <option value="u">U</option>
+      <option value="v">V</option>
+      <option value="w">W</option>
+      <option value="x">X</option>
+      <option value="y">Y</option>
+      <option value="z">Z</option>
+    </select>
+    <div id="results">
+
+    </div>
+  </form>
     <!-- acc0rdion -->
 <section class="box2">    
     <div class="accordion" id="accordionExample">
