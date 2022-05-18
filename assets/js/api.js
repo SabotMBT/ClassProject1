@@ -8,7 +8,7 @@ var artistAlbums = "";
 var artistTopTracks = "";
 var artistName = "";
 // settings for first API search
-const settings = {
+const settings1 = {
   async: true,
   crossDomain: true,
   url: "https://spotify23.p.rapidapi.com/search/?q=",
@@ -42,8 +42,8 @@ const settings2 = {
 $(search).on("click", function () {
   event.preventDefault();
   input = $("#artists").val();
-  settings.data.q = input;
-  $.ajax(settings).done(function (response) {
+  settings1.data.q = input;
+  $.ajax(settings1).done(function (response) {
     console.log(response);
     infoArray = response;
     rawID = infoArray.artists.items[0].data.uri;
