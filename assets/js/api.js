@@ -1,5 +1,4 @@
-
-// global variables  
+// global variables
 var input = $("#artists").val();
 var search = $("button#search");
 var infoArray = "";
