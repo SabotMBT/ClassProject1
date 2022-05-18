@@ -29,46 +29,42 @@
 //     } );
 //   } );
 
-
 var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "",
-    "method": "GET",
-    "headers": {
-        "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
-        "X-RapidAPI-Key": "eaec35990amsh814deba101d8394p1f7881jsn5a8d39c6cfd3"
-    }
+  async: true,
+  crossDomain: true,
+  url: "",
+  method: "GET",
+  headers: {
+    "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
+    "X-RapidAPI-Key": "eaec35990amsh814deba101d8394p1f7881jsn5a8d39c6cfd3",
+  },
 };
 //in progress, will proceed a random artist from API list
 function randomFunction() {
-    var property;
-    property = artists[Math.floor(Math.random() * artists.length)]
-    console.log(property)
+  var property;
+  property = artists[Math.floor(Math.random() * artists.length)];
+  console.log(property);
 }
 
 var queryBase = "https://spotify23.p.rapidapi.com/search/?q=genre:";
 var endOfQuery = "&type=genre&limit=100";
-var artists = []
+var artists = [];
 // var artists = [];
 function pullData() {
-    console.log($("#lang").val());
-    settings.url = queryBase + $("#lang").val() + endOfQuery;
-    console.log(settings);
-    $.ajax(settings).done(function (response) {
-        var accum = "";
+  console.log($("#lang").val());
+  settings.url = queryBase + $("#lang").val() + endOfQuery;
+  console.log(settings);
+  $.ajax(settings).done(function (response) {
+    // results are stored in:
+    // response.artists.items[$].data.profile.name
 
-        // results are stored in:
-        // response.artists.items[$].data.profile.name
-
-        response.artists.items.forEach(
-            element => {
-                accum += element.data.profile.name;
-                artists.push(element.data.profile.name);
-            }
-        );
-        $("#results").text(accum)
-        console.log(response);
-    })
-    // }
+    var artistArr = response.artists.items;
+    for (i = 0; i < artistArr.length; i++) {
+      var artName = artistArr[i].data.profile.name;
+      var listItem = $("<li>");
+      $("ul#genreList").append(listItem);
+      listItem.text(artName);
+    }
+    console.log(response);
+  });
 }
