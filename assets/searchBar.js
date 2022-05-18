@@ -1,77 +1,83 @@
-var input = $("#artists").val();
-var search = $("button#search");
-var infoArray = "";
-var rawID = "";
-var artistID = "";
-var artistAlbums = "";
-var artistTopTracks = "";
-var artistName = "";
+// var input = $("#artists").val();
+// var search = $("button#search");
+// var infoArray = "";
+// var rawID = "";
+// var artistID = "";
+// var artistAlbums = "";
+// var artistTopTracks = "";
+// var artistName = "";
 
-const settings = {
-  async: true,
-  crossDomain: true,
-  url: "https://spotify23.p.rapidapi.com/search/?q=",
-  method: "GET",
-  data: {
-    q: input,
-    type: "multi",
-    offset: 0,
-    limit: 10,
-  },
-  headers: {
-    "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
-    "X-RapidAPI-Key": "54925b7d60msh3c1dfb426ff3887p135fcfjsn984b8600dd90",
-  },
-};
-const settings2 = {
-  async: true,
-  crossDomain: true,
-  url: "https://spotify23.p.rapidapi.com/artist_overview/?id=",
-  method: "GET",
-  data: {
-    id: artistID,
-  },
-  headers: {
-    "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
-    "X-RapidAPI-Key": "54925b7d60msh3c1dfb426ff3887p135fcfjsn984b8600dd90",
-  },
-};
-$(search).on("click", function () {
-  event.preventDefault();
-  input = $("#artists").val();
-  settings.data.q = input;
-  $.ajax(settings).done(function (response) {
-    console.log(response);
-    infoArray = response;
-    rawID = infoArray.artists.items[0].data.uri;
-    artistID = rawID.substring(15);
-    console.log(artistID);
-    settings2.data.id = artistID;
-    $.ajax(settings2).done(function (response) {
-      console.log(response);
-      artistAlbums = response.data.artist.discography.albums.items;
-      console.log(artistAlbums);
-      artistTopTracks = response.data.artist.discography.topTracks.items;
-      console.log(artistTopTracks);
-      artistName = artistTopTracks[0].track.artists.items[0].profile.name;
-      var albumCover = artistTopTracks[0].track.album.coverArt.sources[1];
-      localStorage.setItem("album-cover", albumCover);
-      var img = artistAlbums[0].releases.items[0].coverArt.sources[1].url;
+// const settings = {
+//   async: true,
+//   crossDomain: true,
+//   url: "https://spotify23.p.rapidapi.com/search/?q=",
+//   method: "GET",
+//   data: {
+//     q: input,
+//     type: "multi",
+//     offset: 0,
+//     limit: 10,
+//   },
+//   headers: {
+//     "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
+//     "X-RapidAPI-Key": "54925b7d60msh3c1dfb426ff3887p135fcfjsn984b8600dd90",
+//   },
+// };
+// const settings2 = {
+//   async: true,
+//   crossDomain: true,
+//   url: "https://spotify23.p.rapidapi.com/artist_overview/?id=",
+//   method: "GET",
+//   data: {
+//     id: artistID,
+//   },
+//   headers: {
+//     "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
+//     "X-RapidAPI-Key": "54925b7d60msh3c1dfb426ff3887p135fcfjsn984b8600dd90",
+//   },
+// };
 
-      $("#img1").attr("src", img);
-      console.log(img);
-      localStorage.setItem("artist-name", artistName);
-      localStorage.getItem("artist-name");
-      console.log(artistName);
-      // accGen()
-    });
-  });
-});
+// $(search).on("click", function () {
+//   event.preventDefault();
+//   input = $("#artists").val();
+//   settings.data.q = input;
+//   $.ajax(settings).done(function (response) {
+//     console.log(response);
+//     infoArray = response;
+//     rawID = infoArray.artists.items[0].data.uri;
+//     artistID = rawID.substring(15);
+//     console.log(artistID);
+//     settings2.data.id = artistID;
+//     $.ajax(settings2).done(function (response) {
+//       console.log(response);
+//       artistAlbums = response.data.artist.discography.albums.items;
+//       console.log(artistAlbums);
+//       artistTopTracks = response.data.artist.discography.topTracks.items;
+//       console.log(artistTopTracks);
+//       artistName = artistTopTracks[0].track.artists.items[0].profile.name;
+
+//       // accGen()
+//     });
+//   });
+// });
+
+function artInfo() {
+  var albumCover = artistTopTracks[0].track.album.coverArt.sources[1];
+  localStorage.setItem("album-cover", albumCover);
+  var img = artistAlbums[0].releases.items[0].coverArt.sources[1].url;
+  $("#img1").attr("src", img);
+  console.log(img);
+  localStorage.setItem("artist-name", artistName);
+  localStorage.getItem("artist-name");
+  console.log(artistName);
+  var artistTracks = artistTopTracks[0];
+  $("#hitSong").append(artistTracks);
+}
 
 function accGen() {
-  $("section.box2").empty();
+  $("#box2").empty();
   var newAcc = $("<div>");
-  $("section.box2").append(newAcc);
+  $("#box2").append(newAcc);
   newAcc.addClass("accordion");
   newAcc.attr("id", "accordionExample");
   var newAccI1 = $("<div>");
