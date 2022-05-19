@@ -40,16 +40,15 @@ var settings = {
   },
 };
 //in progress, will proceed a random artist from API list
-function randomFunction() {
-  var property;
-  property = artists[Math.floor(Math.random() * artists.length)];
+function randomFunction(randomArtist) {
+  console.log(randomArtist);
+  var property = randomArtist[Math.floor(Math.random() * randomArtist.length)];
   console.log(property);
 }
 
 var queryBase = "https://spotify23.p.rapidapi.com/search/?q=genre:";
 var endOfQuery = "&type=genre&limit=100";
 var artists = [];
-// var artists = [];
 function pullData() {
   console.log($("#lang").val());
   settings.url = queryBase + $("#lang").val() + endOfQuery;
@@ -64,7 +63,9 @@ function pullData() {
       var listItem = $("<li>");
       $("ul#genreList").append(listItem);
       listItem.text(artName);
+
     }
     console.log(response);
+    randomFunction(artists)
   });
 }
