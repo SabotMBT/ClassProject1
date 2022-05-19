@@ -30,6 +30,16 @@ function artInfo() {
     $("#list").append(listItem);
     listItem.text(artistTracks);
   }
+  var ordLi2 = $("<ol>");
+  $("#body3").append(ordLi2);
+  ordLi2.attr("id", "list2");
+  for (i = 0; i < 5; i++) {
+    var lyricEl = artistTopTracks[0].track.contentRating.label;
+    var listItem2 = $("<li>");
+    $("#list2").append(listItem2);
+    listItem2.append(lyricEl);
+    // accGen()
+  }
 }
 
 function accGen() {
@@ -66,6 +76,14 @@ function accGen() {
   });
 }
 
+$(function () {
+  searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
+
+  var availableTags = searchHistory;
+  $("#artists").autocomplete({
+    source: availableTags,
+  });
+});
 // $( function() {
 //     function log( message ) {
 //       $( ".input" ).text( message ).prependTo( "#log" );
