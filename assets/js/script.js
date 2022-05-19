@@ -57,12 +57,29 @@ function pullData() {
   $.ajax(settings).done(function (response) {
     // results are stored in:
     // response.artists.items[$].data.profile.name
-
+    $("#genreList1").empty();
+    $("#genreList2").empty();
+    $("#genreList3").empty();
     var artistArr = response.artists.items;
-    for (i = 0; i < artistArr.length; i++) {
-      var artName = artistArr[i].data.profile.name;
-      var listItem = $("<li>");
-      $("ul#genreList").append(listItem);
+    var firstList = artistArr.splice(0, Math.round(artistArr.length / 3));
+    var secondList = artistArr.splice(0, Math.round(artistArr.length / 2));
+    var thirdList = artistArr;
+    for (i = 0; i < firstList.length; i++) {
+      var artName = firstList[i].data.profile.name;
+      var listItem = $('<li class="list-group-item">');
+      $("ul#genreList1").append(listItem);
+      listItem.text(artName);
+    }
+    for (i = 0; i < secondList.length; i++) {
+      var artName = secondList[i].data.profile.name;
+      var listItem = $('<li class="list-group-item">');
+      $("ul#genreList2").append(listItem);
+      listItem.text(artName);
+    }
+    for (i = 0; i < thirdList.length; i++) {
+      var artName = thirdList[i].data.profile.name;
+      var listItem = $('<li class="list-group-item">');
+      $("ul#genreList3").append(listItem);
       listItem.text(artName);
     }
     console.log(response);

@@ -1,4 +1,10 @@
 #img1 {
-    height: 64px;
-    width: 64px;
+  height: 64px;
+  width: 64px;
+}
+
+ul {
+  columns: 3;
+  /* -webkit-columns: 3;
+  -moz-columns: 3; */
 }
