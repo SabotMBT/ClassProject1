@@ -8,8 +8,10 @@ function artInfo() {
   console.log(artistName);
   $("#body1").empty();
   $("#body2").empty();
-  $("#body3").empty();
-  for (i = 0; i < 5; i++) {
+  for (i = 0; i < artistAlbums.length; i++) {
+    if (i > 4) {
+      return;
+    }
     var img = artistAlbums[i].releases.items[0].coverArt.sources[1].url;
     var createImg = $("<img>");
     $("#body1").append(createImg);
