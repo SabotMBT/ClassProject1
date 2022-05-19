@@ -10,6 +10,7 @@ var artistName = "";
 var savedObj = "";
 var loadedObj = "";
 var searchHistory = [];
+var eventData = "";
 // settings for first API search
 const settings1 = {
   async: true,
@@ -42,11 +43,6 @@ const settings2 = {
   },
 };
 
-const settings3 = {
-  async: true,
-  crossDomain: true,
-  url: "",
-};
 //search on button click
 $(search).on("click", function () {
   event.preventDefault();
@@ -73,6 +69,7 @@ $(search).on("click", function () {
       localStorage.setItem("lastSearch", JSON.stringify(savedObj));
 
       artInfo();
+      eventLookup();
     });
   });
 });
@@ -80,4 +77,43 @@ $(document).ready(function () {
   artInfo();
 });
 
-function eventLookup() {}
+function eventLookup() {
+  $.ajax({
+    url:
+      "https://rest.bandsintown.com/artists/" +
+      encodeURIComponent(artistName) +
+      "/events/?app_id=11fd1719872137f611a737acb9d8cfdc",
+    // beforeSend: function (xhr) {
+    //   xhr.setRequestHeader();
+    // },
+    success: function (data) {
+      eventData = data;
+      console.log(eventData);
+      eventCards();
+    },
+  });
+}
+
+function eventCards() {
+  console.log("eventCard function triggered");
+  $("#body3").empty();
+  for (i = 0; i < eventData.length; i++) {
+    if (i > 4) {
+      return;
+    }
+    var card = $('<div class="card w-auto">');
+    $("#body3").append(card);
+    var cardbody = $('<div class="card-body">');
+    card.append(cardbody);
+    var cardTitle = $('<h5 class="card-title">');
+    var cardDate = $('<p class="card-text">');
+    var cardLoc = $('<p class="card-text">');
+    cardTitle.text(eventData[i].venue.name);
+    const dnt = new Date(eventData[i].datetime);
+    cardDate.text(dnt);
+    cardLoc.text(eventData[i].venue.location);
+    cardbody.append(cardTitle);
+    cardbody.append(cardDate);
+    cardbody.append(cardLoc);
+  }
+}
