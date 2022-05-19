@@ -1,1 +1,10 @@
+<<<<<<< HEAD
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 100px;
+}
+=======
 
+>>>>>>> 64402e99978f2258deb28f867813b2f297083e02

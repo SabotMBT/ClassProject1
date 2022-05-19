@@ -24,7 +24,24 @@
     </div>
 
   </header>
-
+  <!-- nav bar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only"></span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
   <!-- Search autopopulate -->
   <div class="ui-widget text-center bonkers">
     <label for="artists"></label>
@@ -35,17 +52,7 @@
   <div class="ui-widget" style="margin-top:2em; font-family:Arial">
     <div id="log" style="height: 200px; width: 300px; overflow: auto;" class="ui-widget-content"></div>
   </div>
-  <!-- Navbar -->
-  <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown"
-      aria-haspopup="true" aria-expanded="false">
-      Dropdown
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-      <button class="dropdown-item" type="button">Home</button>
-      <button onclick="randomFunction()" class="dropdown-item" type="button">Random</button>
-      <button class="dropdown-item" type="button">Contact</button>
-    </div>
+  <!-- search genre -->
   </div>
   <form action="#">
     <label for="lang">Browse Genres</label>
@@ -62,10 +69,16 @@
       <option value="metal">Metal</option>
       <option value="pop">Pop</option>
       <option value="rap">Rap</option>
+      <option value="random" id="randomOpt">Random</option>
       <option value="rock">Rock</option>
       <option value="world">World</option>
     </select>
   </form>
+<<<<<<< HEAD
+  <ul id="genreList">
+
+  </ul>
+=======
   <div class="accordion" id="genreListAcc">
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingOne">
@@ -89,6 +102,7 @@
       </div>
     </div>
   </div>
+>>>>>>> 64402e99978f2258deb28f867813b2f297083e02
   <!-- acc0rdion -->
   <section class="box2">
     <div class="accordion" id="accordionExample">
