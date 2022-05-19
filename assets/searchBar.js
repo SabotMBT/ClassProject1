@@ -76,11 +76,14 @@ function accGen() {
     "data-bs-parent": "#accordionExample",
   });
 }
-$(function () {
-  searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
 
-  var availableTags = searchHistory;
-  $("#artists").autocomplete({
-    source: availableTags,
+$("#artists").on("click", function () {
+  $(function () {
+    searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
+
+    var availableTags = searchHistory;
+    $("#artists").autocomplete({
+      source: availableTags,
+    });
   });
 });
