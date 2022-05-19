@@ -9,6 +9,7 @@ var artistTopTracks = "";
 var artistName = "";
 var savedObj = "";
 var loadedObj = "";
+var searchHistory = [];
 // settings for first API search
 const settings1 = {
   async: true,
@@ -44,6 +45,12 @@ const settings2 = {
 $(search).on("click", function () {
   event.preventDefault();
   input = $("#artists").val();
+  searchHistory.unshift(input);
+  if (searchHistory.length > 10) {
+    searchHistory.pop();
+  }
+  console.log(searchHistory);
+  localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
   settings1.data.q = input;
   $.ajax(settings1).done(function (response) {
     console.log(response);
@@ -56,15 +63,11 @@ $(search).on("click", function () {
       console.log(response);
       savedObj = response;
       localStorage.setItem("lastSearch", JSON.stringify(savedObj));
-      loadedObj = JSON.parse(localStorage.getItem("lastSearch"));
-      artistAlbums = loadedObj.data.artist.discography.albums.items;
-      console.log(artistAlbums);
-      artistTopTracks = loadedObj.data.artist.discography.topTracks.items;
-      console.log(artistTopTracks);
-      artistName = artistTopTracks[0].track.artists.items[0].profile.name;
-      console.log(artistName);
+
       artInfo();
     });
   });
 });
-artists.items;
+$(document).ready(function () {
+  artInfo();
+});
