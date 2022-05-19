@@ -41,10 +41,18 @@ const settings2 = {
     "X-RapidAPI-Key": "54925b7d60msh3c1dfb426ff3887p135fcfjsn984b8600dd90",
   },
 };
+
+const settings3 = {
+  async: true,
+  crossDomain: true,
+  url: "",
+};
 //search on button click
 $(search).on("click", function () {
   event.preventDefault();
   input = $("#artists").val();
+  localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+  searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
   searchHistory.unshift(input);
   if (searchHistory.length > 10) {
     searchHistory.pop();
@@ -71,3 +79,5 @@ $(search).on("click", function () {
 $(document).ready(function () {
   artInfo();
 });
+
+function eventLookup() {}
