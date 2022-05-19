@@ -1,34 +1,3 @@
-// axios.request(options).then(function (response) {
-//   console.log(response.data);
-// }).catch(function (error) {
-//   console.error(error);
-// });
-// console.log(options)
-// $( function() {
-//     function log( message ) {
-//       $( "<div>" ).text( message ).prependTo( "#log" );
-//       $( "#log" ).scrollTop( 0 );
-//     }
-//     $( "#artists" ).autocomplete({
-//       source: function( request, response ) {
-//         $.ajax( {
-//           url: "search.php",
-//           dataType: "jsonp",
-//           data: {
-//             term: request.term
-//           },
-//           success: function( data ) {
-//             response( data );
-//           }
-//         } );
-//       },
-//       minLength: 2,
-//       select: function( event, ui ) {
-//         log( "Selected: " + ui.item.value + " aka " + ui.item.id );
-//       }
-//     } );
-//   } );
-
 var settings = {
   async: true,
   crossDomain: true,
@@ -56,12 +25,29 @@ function pullData() {
   $.ajax(settings).done(function (response) {
     // results are stored in:
     // response.artists.items[$].data.profile.name
-
+    $("#genreList1").empty();
+    $("#genreList2").empty();
+    $("#genreList3").empty();
     var artistArr = response.artists.items;
-    for (i = 0; i < artistArr.length; i++) {
-      var artName = artistArr[i].data.profile.name;
-      var listItem = $("<li>");
-      $("ul#genreList").append(listItem);
+    var firstList = artistArr.splice(0, Math.round(artistArr.length / 3));
+    var secondList = artistArr.splice(0, Math.round(artistArr.length / 2));
+    var thirdList = artistArr;
+    for (i = 0; i < firstList.length; i++) {
+      var artName = firstList[i].data.profile.name;
+      var listItem = $('<li class="list-group-item">');
+      $("ul#genreList1").append(listItem);
+      listItem.text(artName);
+    }
+    for (i = 0; i < secondList.length; i++) {
+      var artName = secondList[i].data.profile.name;
+      var listItem = $('<li class="list-group-item">');
+      $("ul#genreList2").append(listItem);
+      listItem.text(artName);
+    }
+    for (i = 0; i < thirdList.length; i++) {
+      var artName = thirdList[i].data.profile.name;
+      var listItem = $('<li class="list-group-item">');
+      $("ul#genreList3").append(listItem);
       listItem.text(artName);
 
     }

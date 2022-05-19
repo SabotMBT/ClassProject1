@@ -1,68 +1,17 @@
-// var input = $("#artists").val();
-// var search = $("button#search");
-// var infoArray = "";
-// var rawID = "";
-// var artistID = "";
-// var artistAlbums = "";
-// var artistTopTracks = "";
-// var artistName = "";
-
-// const settings = {
-//   async: true,
-//   crossDomain: true,
-//   url: "https://spotify23.p.rapidapi.com/search/?q=",
-//   method: "GET",
-//   data: {
-//     q: input,
-//     type: "multi",
-//     offset: 0,
-//     limit: 10,
-//   },
-//   headers: {
-//     "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
-//     "X-RapidAPI-Key": "54925b7d60msh3c1dfb426ff3887p135fcfjsn984b8600dd90",
-//   },
-// };
-// const settings2 = {
-//   async: true,
-//   crossDomain: true,
-//   url: "https://spotify23.p.rapidapi.com/artist_overview/?id=",
-//   method: "GET",
-//   data: {
-//     id: artistID,
-//   },
-//   headers: {
-//     "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
-//     "X-RapidAPI-Key": "54925b7d60msh3c1dfb426ff3887p135fcfjsn984b8600dd90",
-//   },
-// };
-
-// $(search).on("click", function () {
-//   event.preventDefault();
-//   input = $("#artists").val();
-//   settings.data.q = input;
-//   $.ajax(settings).done(function (response) {
-//     console.log(response);
-//     infoArray = response;
-//     rawID = infoArray.artists.items[0].data.uri;
-//     artistID = rawID.substring(15);
-//     console.log(artistID);
-//     settings2.data.id = artistID;
-//     $.ajax(settings2).done(function (response) {
-//       console.log(response);
-//       artistAlbums = response.data.artist.discography.albums.items;
-//       console.log(artistAlbums);
-//       artistTopTracks = response.data.artist.discography.topTracks.items;
-//       console.log(artistTopTracks);
-//       artistName = artistTopTracks[0].track.artists.items[0].profile.name;
-
-//       // accGen()
-//     });
-//   });
-// });
-
 function artInfo() {
-  for (i = 0; i < 5; i++) {
+  loadedObj = JSON.parse(localStorage.getItem("lastSearch"));
+  artistAlbums = loadedObj.data.artist.discography.albums.items;
+  console.log(artistAlbums);
+  artistTopTracks = loadedObj.data.artist.discography.topTracks.items;
+  console.log(artistTopTracks);
+  artistName = artistTopTracks[0].track.artists.items[0].profile.name;
+  // console.log(artistName);
+  $("#body1").empty();
+  $("#body2").empty();
+  for (i = 0; i < artistAlbums.length; i++) {
+    if (i > 4) {
+      break;
+    }
     var img = artistAlbums[i].releases.items[0].coverArt.sources[1].url;
     var createImg = $("<img>");
     $("#body1").append(createImg);
@@ -73,6 +22,7 @@ function artInfo() {
   localStorage.getItem("artist-name");
   console.log(artistName);
   var ordLi = $("<ol>");
+  console.log(ordLi);
   $("#body2").append(ordLi);
   ordLi.attr("id", "list");
   for (i = 0; i < 5; i++) {
@@ -81,6 +31,16 @@ function artInfo() {
     $("#list").append(listItem);
     listItem.text(artistTracks);
   }
+  // var ordLi2 = $("<ol>");
+  // $("#body3").append(ordLi2);
+  // ordLi2.attr("id", "list2");
+  // for (i = 0; i < 5; i++) {
+  //   var lyricEl = artistTopTracks[0].track.contentRating.label;
+  //   var listItem2 = $("<li>");
+  //   $("#list2").append(listItem2);
+  //   listItem2.append(lyricEl);
+  //   // accGen()
+  // }
 }
 
 function accGen() {
@@ -117,28 +77,13 @@ function accGen() {
   });
 }
 
-// $( function() {
-//     function log( message ) {
-//       $( ".input" ).text( message ).prependTo( "#log" );
-//       $( "#log" ).scrollTop( 0 );
-//     }
+$("#artists").on("click", function () {
+  $(function () {
+    searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
 
-//     $( "#artists" ).autocomplete({
-//       source: function( request, response ) {
-//         $.ajax( {
-//           url: "search.php",
-//           dataType: "jsonp",
-//           data: {
-//             term: request.term
-//           },
-//           success: function( data ) {
-//             response( data );
-//           }
-//         } );
-//       },
-//       minLength: 2,
-//       select: function( event, ui ) {
-//         log( "Selected: " + ui.item.value + " aka " + ui.item.id );
-//       }
-//     } );
-//   } );
+    var availableTags = searchHistory;
+    $("#artists").autocomplete({
+      source: availableTags,
+    });
+  });
+});

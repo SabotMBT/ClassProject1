@@ -7,6 +7,10 @@ var artistID = "";
 var artistAlbums = "";
 var artistTopTracks = "";
 var artistName = "";
+var savedObj = "";
+var loadedObj = "";
+var searchHistory = [];
+var eventData = "";
 // settings for first API search
 const settings1 = {
   async: true,
@@ -21,7 +25,7 @@ const settings1 = {
   },
   headers: {
     "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
-    "X-RapidAPI-Key": "54925b7d60msh3c1dfb426ff3887p135fcfjsn984b8600dd90",
+    "X-RapidAPI-Key": "eaec35990amsh814deba101d8394p1f7881jsn5a8d39c6cfd3",
   },
 };
 //settings for second API search
@@ -35,13 +39,22 @@ const settings2 = {
   },
   headers: {
     "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
-    "X-RapidAPI-Key": "54925b7d60msh3c1dfb426ff3887p135fcfjsn984b8600dd90",
+    "X-RapidAPI-Key": "eaec35990amsh814deba101d8394p1f7881jsn5a8d39c6cfd3",
   },
 };
+
 //search on button click
 $(search).on("click", function () {
   event.preventDefault();
   input = $("#artists").val();
+  localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+  searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
+  searchHistory.unshift(input);
+  if (searchHistory.length > 10) {
+    searchHistory.pop();
+  }
+  console.log(searchHistory);
+  localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
   settings1.data.q = input;
   $.ajax(settings1).done(function (response) {
     console.log(response);
@@ -52,13 +65,55 @@ $(search).on("click", function () {
     settings2.data.id = artistID;
     $.ajax(settings2).done(function (response) {
       console.log(response);
-      artistAlbums = response.data.artist.discography.albums.items;
-      console.log(artistAlbums);
-      artistTopTracks = response.data.artist.discography.topTracks.items;
-      console.log(artistTopTracks);
-      artistName = artistTopTracks[0].track.artists.items[0].profile.name;
+      savedObj = response;
+      localStorage.setItem("lastSearch", JSON.stringify(savedObj));
+
       artInfo();
+      eventLookup();
     });
   });
 });
-artists.items;
+$(document).ready(function () {
+  artInfo();
+});
+
+function eventLookup() {
+  $.ajax({
+    url:
+      "https://rest.bandsintown.com/artists/" +
+      encodeURIComponent(artistName) +
+      "/events/?app_id=11fd1719872137f611a737acb9d8cfdc",
+    // beforeSend: function (xhr) {
+    //   xhr.setRequestHeader();
+    // },
+    success: function (data) {
+      eventData = data;
+      console.log(eventData);
+      eventCards();
+    },
+  });
+}
+
+function eventCards() {
+  console.log("eventCard function triggered");
+  $("#body3").empty();
+  for (i = 0; i < eventData.length; i++) {
+    if (i > 4) {
+      return;
+    }
+    var card = $('<div class="card w-auto">');
+    $("#body3").append(card);
+    var cardbody = $('<div class="card-body">');
+    card.append(cardbody);
+    var cardTitle = $('<h5 class="card-title">');
+    var cardDate = $('<p class="card-text">');
+    var cardLoc = $('<p class="card-text">');
+    cardTitle.text(eventData[i].venue.name);
+    const dnt = new Date(eventData[i].datetime);
+    cardDate.text(dnt);
+    cardLoc.text(eventData[i].venue.location);
+    cardbody.append(cardTitle);
+    cardbody.append(cardDate);
+    cardbody.append(cardLoc);
+  }
+}
