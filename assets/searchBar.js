@@ -5,12 +5,12 @@ function artInfo() {
   artistTopTracks = loadedObj.data.artist.discography.topTracks.items;
   console.log(artistTopTracks);
   artistName = artistTopTracks[0].track.artists.items[0].profile.name;
-  console.log(artistName);
+  // console.log(artistName);
   $("#body1").empty();
   $("#body2").empty();
   for (i = 0; i < artistAlbums.length; i++) {
     if (i > 4) {
-      return;
+      break;
     }
     var img = artistAlbums[i].releases.items[0].coverArt.sources[1].url;
     var createImg = $("<img>");
@@ -22,6 +22,7 @@ function artInfo() {
   localStorage.getItem("artist-name");
   console.log(artistName);
   var ordLi = $("<ol>");
+  console.log(ordLi);
   $("#body2").append(ordLi);
   ordLi.attr("id", "list");
   for (i = 0; i < 5; i++) {
@@ -65,29 +66,3 @@ function accGen() {
     "data-bs-parent": "#accordionExample",
   });
 }
-
-// $( function() {
-//     function log( message ) {
-//       $( ".input" ).text( message ).prependTo( "#log" );
-//       $( "#log" ).scrollTop( 0 );
-//     }
-
-//     $( "#artists" ).autocomplete({
-//       source: function( request, response ) {
-//         $.ajax( {
-//           url: "search.php",
-//           dataType: "jsonp",
-//           data: {
-//             term: request.term
-//           },
-//           success: function( data ) {
-//             response( data );
-//           }
-//         } );
-//       },
-//       minLength: 2,
-//       select: function( event, ui ) {
-//         log( "Selected: " + ui.item.value + " aka " + ui.item.id );
-//       }
-//     } );
-//   } );
