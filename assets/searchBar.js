@@ -35,11 +35,11 @@ function artInfo() {
 
 $("#artists").on("click", function () {
   $(function () {
-    searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
+    searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
 
-    var availableTags = searchHistory;
+    console.log(searchHistory);
     $("#artists").autocomplete({
-      source: availableTags,
+      source: searchHistory,
     });
   });
 });
