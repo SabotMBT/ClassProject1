@@ -1,5 +1,5 @@
 // global variables
-var input = $("#artists").val();
+var input = $("#artists");
 var search = $("button#search");
 var infoArray = "";
 var rawID = "";
@@ -9,7 +9,7 @@ var artistTopTracks = "";
 var artistName = "";
 var savedObj = "";
 var loadedObj = "";
-var searchHistory = [];
+var searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
 var eventData = "";
 // settings for first API search
 const settings1 = {
@@ -44,18 +44,19 @@ const settings2 = {
 };
 
 //search on button click
-$(search).on("click", function () {
+$(search).on("click", function (event) {
   event.preventDefault();
-  input = $("#artists").val();
-  localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
-  searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
-  searchHistory.unshift(input);
+  var userInput = input.val().toLowerCase();
+  searchHistory.unshift(userInput);
   if (searchHistory.length > 10) {
     searchHistory.pop();
   }
-  console.log(searchHistory);
-  localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
-  settings1.data.q = input;
+  var shSet = new Set(searchHistory);
+  console.log(shSet);
+  var sHcopy = [...shSet];
+  console.log(sHcopy);
+  localStorage.setItem("searchHistory", JSON.stringify(sHcopy));
+  settings1.data.q = userInput;
   $.ajax(settings1).done(function (response) {
     console.log(response);
     infoArray = response;
@@ -74,7 +75,11 @@ $(search).on("click", function () {
   });
 });
 $(document).ready(function () {
-  artInfo();
+  if (localStorage.getItem("lastSearch") !== null) {
+    artInfo();
+  } else {
+    return;
+  }
 });
 
 function eventLookup() {
