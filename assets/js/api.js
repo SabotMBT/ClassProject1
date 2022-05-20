@@ -83,9 +83,6 @@ function eventLookup() {
       "https://rest.bandsintown.com/artists/" +
       encodeURIComponent(artistName) +
       "/events/?app_id=11fd1719872137f611a737acb9d8cfdc",
-    // beforeSend: function (xhr) {
-    //   xhr.setRequestHeader();
-    // },
     success: function (data) {
       eventData = data;
       console.log(eventData);
@@ -99,7 +96,7 @@ function eventCards() {
   $("#body3").empty();
   for (i = 0; i < eventData.length; i++) {
     if (i > 4) {
-      return;
+      break;
     }
     var card = $('<div class="card w-auto">');
     $("#body3").append(card);
