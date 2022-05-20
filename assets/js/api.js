@@ -109,7 +109,10 @@ function eventCards() {
     var cardDate = $('<p class="card-text">');
     var cardLoc = $('<p class="card-text">');
     cardTitle.text(eventData[i].venue.name);
-    const dnt = new Date(eventData[i].datetime);
+    const dnt = dateFormat(
+      new Date(eventData[i].datetime),
+      "mm/dd/yy, h:MM TT"
+    );
     cardDate.text(dnt);
     cardLoc.text(eventData[i].venue.location);
     cardbody.append(cardTitle);
