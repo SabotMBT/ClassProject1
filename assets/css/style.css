@@ -1,3 +1,11 @@
+/* colol palette */
+:root {
+  --primary: rgba(230, 40, 40, 0.504);
+  --secondary: blue;
+  --primdark: blue;
+  --secondark: blue;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -17,4 +25,8 @@ ul {
   columns: 3;
   /* -webkit-columns: 3;
   -moz-columns: 3; */
+}
+
+.bg-prim {
+  background-color: var(--primary);
 }
