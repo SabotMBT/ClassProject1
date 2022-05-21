@@ -26,32 +26,15 @@ function pullData() {
     // results are stored in:
     // response.artists.items[$].data.profile.name
     $("#genreList1").empty();
-    $("#genreList2").empty();
-    $("#genreList3").empty();
     var artistArr = response.artists.items;
-    var firstList = artistArr.splice(0, Math.round(artistArr.length / 3));
-    var secondList = artistArr.splice(0, Math.round(artistArr.length / 2));
-    var thirdList = artistArr;
+    var firstList = artistArr;
     for (i = 0; i < firstList.length; i++) {
       var artName = firstList[i].data.profile.name;
       var listItem = $('<li class="list-group-item">');
       $("ul#genreList1").append(listItem);
       listItem.text(artName);
     }
-    for (i = 0; i < secondList.length; i++) {
-      var artName = secondList[i].data.profile.name;
-      var listItem = $('<li class="list-group-item">');
-      $("ul#genreList2").append(listItem);
-      listItem.text(artName);
-    }
-    for (i = 0; i < thirdList.length; i++) {
-      var artName = thirdList[i].data.profile.name;
-      var listItem = $('<li class="list-group-item">');
-      $("ul#genreList3").append(listItem);
-      listItem.text(artName);
-
-    }
     console.log(response);
-    randomFunction(artists)
+    randomFunction(artists);
   });
 }

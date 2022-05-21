@@ -1,7 +1,8 @@
 /* colol palette */
 :root {
-  --primary: rgba(230, 40, 40, 0.504);
-  --secondary: blue;
+  --primary: #fdfbe0;
+  --secondary: #020741;
+  --textlight: white;
   --primdark: blue;
   --secondark: blue;
 }
@@ -23,23 +24,25 @@ body {
 
 ul {
   columns: 3;
-  /* -webkit-columns: 3;
-  -moz-columns: 3; */
+  -webkit-columns: 3;
+  -moz-columns: 3;
 }
 
-<<<<<<< HEAD
-.bg-prim {
-  background-color: var(--primary);
+@media (max-width: 576px) {
+  ul {
+    columns: 1;
+    -webkit-columns: 1;
+    -moz-columns: 1;
+  }
 }
-=======
 
 .accordOne {
-    background-color: rgba(53, 162, 100, 0.873);
-    border: 3px solid rgba(0, 128, 0, 0.33);
-  }
+  background-color: rgba(53, 162, 100, 0.873);
+  border: 3px solid rgba(0, 128, 0, 0.33);
+}
 
 .accordTwo {
-  background-color: rgb(135, 206, 235, .3);
+  background-color: rgb(135, 206, 235, 0.3);
   border: 3px solid rgba(128, 0, 107, 0.301);
 }
 
@@ -50,11 +53,10 @@ ul {
 .accordFour {
   background-color: rgba(0, 128, 0, 0.816);
   border: 3px solid rgba(0, 128, 0, 0.301);
-
 }
 
 .accordMother {
-  background-color: #87CEEB;
+  background-color: #87ceeb;
   border: 3px solid rgba(100, 148, 237, 0.321);
 }
 
@@ -62,4 +64,70 @@ ul {
   background-color: rgba(1, 16, 16, 0.885);
   border: 3px solid rgba(65, 85, 121, 0.321);
 }
->>>>>>> 7e5754fe304495b0da926de0d59a75f6a466278a
+
+.bg-prim {
+  background-image: -webkit-repeating-linear-gradient(
+      left,
+      hsla(0, 0%, 100%, 0) 0%,
+      hsla(0, 0%, 100%, 0) 6%,
+      hsla(0, 0%, 100%, 0.1) 7.5%
+    ),
+    -webkit-repeating-linear-gradient(left, hsla(0, 0%, 0%, 0) 0%, hsla(
+            0,
+            0%,
+            0%,
+            0
+          )
+          4%, hsla(0, 0%, 0%, 0.03) 4.5%),
+    -webkit-repeating-linear-gradient(left, hsla(0, 0%, 100%, 0) 0%, hsla(
+            0,
+            0%,
+            100%,
+            0
+          )
+          1.2%, hsla(0, 0%, 100%, 0.15) 2.2%),
+    linear-gradient(
+      180deg,
+      hsl(38, 47%, 56%) 0%,
+      hsl(38, 47%, 68%) 47%,
+      hsl(38, 47%, 56%) 53%,
+      hsl(38, 47%, 48%) 100%
+    );
+}
+
+.bg-sec {
+  background: -moz-linear-gradient(
+    top,
+    #030b65 0%,
+    #030953 50%,
+    #020741 92%,
+    #030953
+  );
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#030b65),
+    color-stop(0.5, #030953),
+    color-stop(0.92, #020741),
+    to(#030953)
+  );
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  border: 1px solid #010422;
+  -moz-box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.882),
+    inset 1px 2px 0px rgba(255, 255, 255, 0.4);
+  -webkit-box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.882),
+    inset 1px 2px 0px rgba(255, 255, 255, 0.4);
+  box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.882),
+    inset 1px 2px 0px rgba(255, 255, 255, 0.4);
+  text-shadow: 1px 1px 2px rgba(000, 000, 000, 0.7),
+    0px 1px 0px rgba(255, 255, 255, 0.4);
+}
+.txt-light {
+  color: var(--textlight) !important;
+}
+.k-font {
+  font-family: "Macondo", cursive;
+}

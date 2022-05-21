@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 
 <head>
   <meta charset="UTF-8" />
@@ -13,36 +13,33 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Macondo&display=swap" rel="stylesheet">
-<<<<<<< HEAD
-=======
   <script src="https://kit.fontawesome.com/f4d6b8c7f7.js" crossorigin="anonymous"></script>
->>>>>>> 7e5754fe304495b0da926de0d59a75f6a466278a
   <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
-<body>
+<body class="bg-prim">
 
   <header>
-    <div class="w-100 text-center px-0" style="font-family: 'Macondo', cursive;">
+    <div class="w-100 text-center px-0">
       <h1 class="w-100 px-0">Artist Info</h1>
     </div>
 
   </header>
   <!-- nav bar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-evenly getReady">
-    <a class="navbar-brand">Get Ready to Rock</a>
+  <nav class="navbar navbar-expand-lg navbar-light bg-sec d-flex justify-content-evenly mx-1">
+    <a class="navbar-brand txt-light k-font">Get Ready to Rock</a>
     <div>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link">Hit Us Up! &#8594;</a>
+          <a class="nav-link txt-light k-font">Hit Us Up! &#8594;</a>
         </li>
       </ul>
     </div>
     <div class="icons">
-      <a href="https://github.com/SabotMBT" target="_blank" class="fa-brands fa-github" id="joel">Joel</a>
-      <a href="https://github.com/saraw54" target="_blank" class="fa-brands fa-github">Sara</a>
-      <a href="https://github.com/Kmac5000" target="_blank" class="fa-brands fa-github">Keith</a>
-      <a href="https://github.com/Jaryodd" target="_blank" class="fa-brands fa-github">Jaryodd</a>
+      <a href="https://github.com/SabotMBT" target="_blank" class="fa-brands fa-github txt-light" id="joel">Joel</a>
+      <a href="https://github.com/saraw54" target="_blank" class="fa-brands fa-github txt-light">Sara</a>
+      <a href="https://github.com/Kmac5000" target="_blank" class="fa-brands fa-github txt-light">Keith</a>
+      <a href="https://github.com/Jaryodd" target="_blank" class="fa-brands fa-github txt-light">Jaryodd</a>
     </div>
   </nav>
   <!-- Search autopopulate -->
@@ -50,15 +47,15 @@
     <label for="artists"></label>
     <input class="w-75 my-4" id="artists" placeholder="search" class="form-control basicAutoComplete" type="text"
       autocomplete="off"></input>
-    <button class="btn btn-info dropdown-toggle btn-sm" id="search">search</button>
+    <button class="btn bg-sec txt-light dropdown-toggle btn-sm" id="search">search</button>
   </div>
   <!-- <div class="ui-widget" style="margin-top:2em; font-family:Arial">
     <div id="log" style="height: 200px; width: 300px; overflow: auto;" class="ui-widget-content"></div>
   </div> -->
   <!-- search genre -->
   </div>
-  <form action="#">
-    <label for="lang">Browse Genres</label>
+  <form action="#" class="mx-2">
+    <label for="lang" class="bg-sec px-1 txt-light">Browse Genres</label>
     <select onchange=pullData() name="languages" id="lang">
       <option value="empty"></option>
       <option value="alternative">Alternative</option>
@@ -83,12 +80,12 @@
       <option value="world">World</option>
     </select>
   </form>
-  <div class="accordion" id="genreListAcc">
-    <div class="accordion-item accordOne" class="rounded">
+  <div class="accordion mx-1" id="genreListAcc">
+    <div>
       <h2 class="accordion-header" id="headingOne">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+        <button class="accordion-button collapsed bg-sec txt-light k-font" type="button" data-bs-toggle="collapse"
           data-bs-target="#collapseGenre" aria-expanded="false" aria-controls="collapseGenre"
-          style="font-family: 'Macondo', cursive;">
+        >
           <strong>Select Genre from Dropdown Above</strong>
         </button>
       </h2>
@@ -96,26 +93,18 @@
         data-bs-parent="#accordionExample">
         <div class="accordion-body">
           <div id="results" class="container-fluid d-sm-inline-flex">
-            <ul id="genreList1">
-
-            </ul>
-            <ul id="genreList2">
-
-            </ul>
-            <ul id="genreList3">
-
-            </ul>
+            <ul id="genreList1"></ul>
           </div>
         </div>
       </div>
     </div>
     <!-- acc0rdion -->
-    <section class="box2 accordMother">
+    <section class="box2 ">
       <div class="accordion" id="accordionExample">
-        <div class="accordion-item accordTwo" class="rounded">
+        <div>
           <h2 class="accordion-header" id="headingOne">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-              aria-expanded="true" aria-controls="collapseOne" style="font-family: 'Macondo', cursive;">
+            <button class="accordion-button bg-sec txt-light k-font" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+              aria-expanded="true" aria-controls="collapseOne">
               <strong>Albums</strong>
             </button>
           </h2>
@@ -125,15 +114,14 @@
             </div>
           </div>
         </div>
-        <div class="accordion-item accordThree" class="round">
+        <div>
           <h2 class="accordion-header" id="headingTwo">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            <button class="accordion-button collapsed bg-sec txt-light k-font" type="button" data-bs-toggle="collapse"
               data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"
-              style="font-family: 'Macondo', cursive;">
+            >
               <strong>Top Hits</strong>
             </button>
           </h2>
-          <p id="hitSong"></p>
           <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
             data-bs-parent="#accordionExample">
             <div id="body2" class="accordion-body">
@@ -141,11 +129,11 @@
             </div>
           </div>
         </div>
-        <div class="accordion-item accordFour" class= "rounded">
+        <div>
           <h2 class="accordion-header" id="headingThree">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            <button class="accordion-button collapsed bg-sec txt-light k-font" type="button" data-bs-toggle="collapse"
               data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"
-              style="font-family: 'Macondo', cursive;">
+            >
               <strong>Events</strong>
             </button>
           </h2>
