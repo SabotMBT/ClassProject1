@@ -27,6 +27,39 @@ ul {
   -moz-columns: 3; */
 }
 
+<<<<<<< HEAD
 .bg-prim {
   background-color: var(--primary);
 }
+=======
+
+.accordOne {
+    background-color: rgba(53, 162, 100, 0.873);
+    border: 3px solid rgba(0, 128, 0, 0.33);
+  }
+
+.accordTwo {
+  background-color: rgb(135, 206, 235, .3);
+  border: 3px solid rgba(128, 0, 107, 0.301);
+}
+
+.accordThree {
+  background-color: rgba(255, 217, 0, 0.855);
+  border: 3px solid rgba(115, 123, 6, 0.333);
+}
+.accordFour {
+  background-color: rgba(0, 128, 0, 0.816);
+  border: 3px solid rgba(0, 128, 0, 0.301);
+
+}
+
+.accordMother {
+  background-color: #87CEEB;
+  border: 3px solid rgba(100, 148, 237, 0.321);
+}
+
+.getReady {
+  background-color: rgba(1, 16, 16, 0.885);
+  border: 3px solid rgba(65, 85, 121, 0.321);
+}
+>>>>>>> 7e5754fe304495b0da926de0d59a75f6a466278a
