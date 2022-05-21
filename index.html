@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Macondo&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/f4d6b8c7f7.js" crossorigin="anonymous"></script>
-  <link type="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
@@ -26,7 +26,7 @@
 
   </header>
   <!-- nav bar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-evenly">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-evenly getReady">
     <a class="navbar-brand">Get Ready to Rock</a>
     <div>
       <ul class="navbar-nav mr-auto">
@@ -47,7 +47,7 @@
     <label for="artists"></label>
     <input class="w-75 my-4" id="artists" placeholder="search" class="form-control basicAutoComplete" type="text"
       autocomplete="off"></input>
-    <button class="btn btn-secondary dropdown-toggle btn-sm" id="search">search</button>
+    <button class="btn btn-info dropdown-toggle btn-sm" id="search">search</button>
   </div>
   <!-- <div class="ui-widget" style="margin-top:2em; font-family:Arial">
     <div id="log" style="height: 200px; width: 300px; overflow: auto;" class="ui-widget-content"></div>
@@ -81,7 +81,7 @@
     </select>
   </form>
   <div class="accordion" id="genreListAcc">
-    <div class="accordion-item">
+    <div class="accordion-item accordOne" class="rounded">
       <h2 class="accordion-header" id="headingOne">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
           data-bs-target="#collapseGenre" aria-expanded="false" aria-controls="collapseGenre"
@@ -107,9 +107,9 @@
       </div>
     </div>
     <!-- acc0rdion -->
-    <section class="box2">
+    <section class="box2 accordMother">
       <div class="accordion" id="accordionExample">
-        <div class="accordion-item">
+        <div class="accordion-item accordTwo" class="rounded">
           <h2 class="accordion-header" id="headingOne">
             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
               aria-expanded="true" aria-controls="collapseOne" style="font-family: 'Macondo', cursive;">
@@ -122,7 +122,7 @@
             </div>
           </div>
         </div>
-        <div class="accordion-item">
+        <div class="accordion-item accordThree" class="round">
           <h2 class="accordion-header" id="headingTwo">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
               data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"
@@ -138,7 +138,7 @@
             </div>
           </div>
         </div>
-        <div class="accordion-item">
+        <div class="accordion-item accordFour" class= "rounded">
           <h2 class="accordion-header" id="headingThree">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
               data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"
