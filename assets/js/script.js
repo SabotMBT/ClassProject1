@@ -34,24 +34,23 @@ function pullData() {
     var thirdList = artistArr;
     for (i = 0; i < firstList.length; i++) {
       var artName = firstList[i].data.profile.name;
-      var listItem = $('<li class="list-group-item">');
+      var listItem = $('<li class="list-group-item rounded">');
       $("ul#genreList1").append(listItem);
       listItem.text(artName);
     }
     for (i = 0; i < secondList.length; i++) {
       var artName = secondList[i].data.profile.name;
-      var listItem = $('<li class="list-group-item">');
+      var listItem = $('<li class="list-group-item rounded">');
       $("ul#genreList2").append(listItem);
       listItem.text(artName);
     }
     for (i = 0; i < thirdList.length; i++) {
       var artName = thirdList[i].data.profile.name;
-      var listItem = $('<li class="list-group-item">');
+      var listItem = $('<li class="list-group-item rounded">');
       $("ul#genreList3").append(listItem);
       listItem.text(artName);
-
     }
     console.log(response);
-    randomFunction(artists)
+    randomFunction(artists);
   });
 }

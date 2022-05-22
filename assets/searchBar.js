@@ -27,7 +27,7 @@ function artInfo() {
   ordLi.attr("id", "list");
   for (i = 0; i < 5; i++) {
     var artistTracks = artistTopTracks[i].track.name;
-    var listItem = $('<li class="list-group-item">');
+    var listItem = $('<li class="list-group-item rounded">');
     $("#list").append(listItem);
     listItem.text(artistTracks);
   }
