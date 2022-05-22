@@ -1,3 +1,12 @@
+/* colol palette */
+:root {
+  --primary: #fdfbe0;
+  --secondary: #020741;
+  --textlight: white;
+  --primdark: blue;
+  --secondark: blue;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
