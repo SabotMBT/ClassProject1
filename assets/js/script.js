@@ -9,17 +9,41 @@ var settings = {
   },
 };
 //in progress, will proceed a random artist from API list
-var genres = ["Alternative", "Blues", "Christian", "Classical", "Country", "EDM", "Folk", "Hip-Hop", "Jazz", "K-Pop", "Latin", "Metal", "Pop", "Punk", "Rap", "Rock", "Salsa", "Samba", "Ska", "World"];
+var genres = [
+  "Alternative",
+  "Blues",
+  "Christian",
+  "Classical",
+  "Country",
+  "EDM",
+  "Folk",
+  "Hip-Hop",
+  "Jazz",
+  "K-Pop",
+  "Latin",
+  "Metal",
+  "Pop",
+  "Punk",
+  "Rap",
+  "Rock",
+  "Salsa",
+  "Samba",
+  "Ska",
+  "World",
+];
 
 function randomFunction(randomArtist) {
   console.log($("#lang").val());
-  settings.url = queryBase + genres[Math.floor(Math.random() * genres.length)] + endOfQuery;
+  settings.url =
+    queryBase + genres[Math.floor(Math.random() * genres.length)] + endOfQuery;
   console.log(settings);
   $.ajax(settings).done(function (response) {
     var artistArr = response.artists.items;
     var listItem = $('<li class="list-group-item">');
     $("ul#genreList1").append(listItem);
-    listItem.text(artistArr[Math.floor(Math.random() * artistArr.length)].data.profile.name);
+    listItem.text(
+      artistArr[Math.floor(Math.random() * artistArr.length)].data.profile.name
+    );
   });
 }
 
@@ -31,9 +55,9 @@ function pullData() {
   console.log($("#lang").val());
   //new Sara script
   if (selection === "surpriseMe") {
-    randomFunction()
-  }
-  else { //end of new - add } to bottom
+    randomFunction();
+  } else {
+    //end of new - add } to bottom
     settings.url = queryBase + $("#lang").val() + endOfQuery;
     console.log(settings);
     $.ajax(settings).done(function (response) {
@@ -63,7 +87,6 @@ function pullData() {
         var listItem = $('<li class="list-group-item">');
         $("ul#genreList3").append(listItem);
         listItem.text(artName);
-
       }
       console.log(response);
     });
