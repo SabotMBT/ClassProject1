@@ -71,11 +71,8 @@ function pullData() {
 }
 
 function clickable() {
-  $("#genreList1").delegate("li.listener", "click", popSearch());
-  function popSearch() {
-    input.val() = $(this).val().toLowerCase()
-    artInfo();
-    eventLookup();
-  }
-  var listItem = $('<li class="list-group-item listener">');
+  $("ul#genreList1").delegate("li", "click", function () {
+    input.val($(this)[0].textContent);
+    newSearch();
+  })
 }
