@@ -6,15 +6,61 @@
 body {
   width: 100vw;
   overflow-x: hidden;
+  background-image: url(../images/guitar.jpg);
 }
 
-#img1 {
+img {
   height: 64px;
   width: 64px;
+  border: 2px solid black;
 }
 
-ul {
+#search {
+  color: aliceblue;
+  background-color: #2c0424;
+}
+
+/* ul {
   columns: 3;
-  /* -webkit-columns: 3;
-  -moz-columns: 3; */
+  -webkit-columns: 3;
+  -moz-columns: 3;
+} */
+nav {
+  position: relative;
+  width: auto;
+  border-radius: 10px;
+  border: 3px solid black;
+  background: rgb(168, 91, 91);
+  background: radial-gradient(
+    circle,
+    rgba(168, 91, 91, 1) 24%,
+    rgba(56, 52, 52, 0.8057598039215687) 67%,
+    rgba(98, 98, 98, 1) 96%
+  );
+  font-size: larger;
+}
+
+.accordion-button {
+  background: rgb(168, 91, 91);
+  background: radial-gradient(
+    circle,
+    rgba(168, 91, 91, 1) 24%,
+    rgba(56, 52, 52, 0.8057598039215687) 67%,
+    rgba(98, 98, 98, 1) 96%
+  );
+  border-radius: 10px;
+  border: 3px solid black;
+  font-size: large;
+}
+
+select {
+  margin-left: 7rem;
+}
+
+a {
+  color: black;
+}
+
+.nav-link {
+  color: black;
 }
