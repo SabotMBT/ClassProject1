@@ -72,4 +72,12 @@ function pullData() {
 $("ul#genreList1").delegate("li", "click", function () {
   input.val($(this)[0].textContent);
   newSearch();
-})
+});
+$("ul#genreList2").delegate("li", "click", function () {
+  input.val($(this)[0].textContent);
+  newSearch();
+});
+$("ul#genreList3").delegate("li", "click", function () {
+  input.val($(this)[0].textContent);
+  newSearch();
+});
