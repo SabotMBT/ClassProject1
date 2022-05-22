@@ -46,6 +46,10 @@ const settings2 = {
 //search on button click
 $(search).on("click", function (event) {
   event.preventDefault();
+  newSearch();
+});
+
+function newSearch() {
   var userInput = input.val().toLowerCase();
   searchHistory.unshift(userInput);
   if (searchHistory.length > 10) {
@@ -73,7 +77,8 @@ $(search).on("click", function (event) {
       eventLookup();
     });
   });
-});
+}
+
 $(document).ready(function () {
   if (localStorage.getItem("lastSearch") !== null) {
     artInfo();

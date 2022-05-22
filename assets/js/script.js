@@ -30,7 +30,7 @@ function pullData() {
     var firstList = artistArr;
     for (i = 0; i < firstList.length; i++) {
       var artName = firstList[i].data.profile.name;
-      var listItem = $('<li class="list-group-item">');
+      var listItem = $('<li class="list-group-item listener">');
       $("ul#genreList1").append(listItem);
       listItem.text(artName);
     }
@@ -38,3 +38,8 @@ function pullData() {
     randomFunction(artists);
   });
 }
+
+$("ul#genreList1").delegate("li", "click", function () {
+  input.val($(this)[0].textContent);
+  newSearch();
+});
