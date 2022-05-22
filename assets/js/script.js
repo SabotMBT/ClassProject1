@@ -53,19 +53,19 @@ var artists = [];
 function pullData() {
   var selection = $("#lang").val();
   console.log($("#lang").val());
-  //new Sara script
+  $("#genreList1").empty();
+  $("#genreList2").empty();
+  $("#genreList3").empty();
   if (selection === "surpriseMe") {
-    randomFunction();
-  } else {
-    //end of new - add } to bottom
+    randomFunction()
+  }
+  else {
     settings.url = queryBase + $("#lang").val() + endOfQuery;
     console.log(settings);
     $.ajax(settings).done(function (response) {
       // results are stored in:
       // response.artists.items[$].data.profile.name
-      $("#genreList1").empty();
-      $("#genreList2").empty();
-      $("#genreList3").empty();
+
       var artistArr = response.artists.items;
       var firstList = artistArr.splice(0, Math.round(artistArr.length / 3));
       var secondList = artistArr.splice(0, Math.round(artistArr.length / 2));
@@ -93,6 +93,13 @@ function pullData() {
   }
 }
 $("ul#genreList1").delegate("li", "click", function () {
+  var selection = $("#lang").val();
+  if (selection === "surpriseMe") {
+    $("#genreList1").empty();
+    $("#genreList2").empty();
+    $("#genreList3").empty();
+    randomFunction()
+  }
   input.val($(this)[0].textContent);
   newSearch();
 });
