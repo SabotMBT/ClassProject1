@@ -5,7 +5,7 @@ var settings = {
   method: "GET",
   headers: {
     "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
-    "X-RapidAPI-Key": "eaec35990amsh814deba101d8394p1f7881jsn5a8d39c6cfd3",
+    "X-RapidAPI-Key": "54925b7d60msh3c1dfb426ff3887p135fcfjsn984b8600dd90",
   },
 };
 //in progress, will proceed a random artist from API list
